@@ -20,7 +20,7 @@ public class OpenWeatherWind {
     @JsonProperty("speed")
     private Double speed;
     @JsonProperty("deg")
-    private Double deg;
+    private Integer deg;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -35,12 +35,12 @@ public class OpenWeatherWind {
     }
 
     @JsonProperty("deg")
-    public Double getDeg() {
+    public Integer getDeg() {
         return deg;
     }
 
     @JsonProperty("deg")
-    public void setDeg(Double deg) {
+    public void setDeg(Integer deg) {
         this.deg = deg;
     }
 

@@ -30,7 +30,7 @@ class OpenWeatherMapUriBuilder {
 	}
 
 	OpenWeatherMapUriBuilder withForecast() {
-		forecastPath = "/forecast";
+		forecastPath = "/weather";
 		return this;
 	}
 

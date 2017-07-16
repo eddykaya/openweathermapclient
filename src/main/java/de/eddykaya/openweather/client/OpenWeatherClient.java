@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 import de.eddykaya.openweather.client.exceptions.ResourceNotFoundException;
 import de.eddykaya.openweather.entities.external.CurrentWeather;
-import de.eddykaya.openweather.entities.internal.OpenWeatherCurrentWeather;
+import de.eddykaya.openweather.entities.internal.OpenWeatherExample;
 
 /**
  * A client that can query the openweathermap API for the current weather
@@ -47,17 +47,17 @@ public class OpenWeatherClient {
 		countryCode) {
 		URI requestUri = new OpenWeatherMapUriBuilder()
 			.withVersion("2.5")
-			.withApiKey("d0e7eff721cf0870e5db46cc783b53e5")
+			.withApiKey(apiKey)
 			.withForecast()
 			.withQuery(city)
 			.withQuery(countryCode)
 			.toUri();
 
 		try {
-			ResponseEntity<OpenWeatherCurrentWeather> forEntity = restTemplate.getForEntity(requestUri, OpenWeatherCurrentWeather.class);
+			ResponseEntity<OpenWeatherExample> forEntity = restTemplate.getForEntity(requestUri, OpenWeatherExample.class);
 
-			return Optional.of(CurrentWeather.builder().currentTemperature(forEntity.getBody().getList().get(0).getMain()
-				.getTemp()).build());
+			return Optional.of(CurrentWeather.builder().currentTemperature(forEntity.getBody().getMain().getTemp())
+				.build());
 		} catch (ResourceNotFoundException e) {
 			return Optional.empty();
 		}

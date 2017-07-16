@@ -12,27 +12,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "lat",
-    "lon"
+    "lon",
+    "lat"
 })
 public class OpenWeatherCoord {
 
-    @JsonProperty("lat")
-    private Double lat;
     @JsonProperty("lon")
     private Double lon;
+    @JsonProperty("lat")
+    private Double lat;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    @JsonProperty("lat")
-    public Double getLat() {
-        return lat;
-    }
-
-    @JsonProperty("lat")
-    public void setLat(Double lat) {
-        this.lat = lat;
-    }
 
     @JsonProperty("lon")
     public Double getLon() {
@@ -42,6 +32,16 @@ public class OpenWeatherCoord {
     @JsonProperty("lon")
     public void setLon(Double lon) {
         this.lon = lon;
+    }
+
+    @JsonProperty("lat")
+    public Double getLat() {
+        return lat;
+    }
+
+    @JsonProperty("lat")
+    public void setLat(Double lat) {
+        this.lat = lat;
     }
 
     @JsonAnyGetter

@@ -12,75 +12,75 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "cod",
-    "message",
-    "cnt",
-    "list",
-    "city"
+    "temp",
+    "pressure",
+    "humidity",
+    "temp_min",
+    "temp_max"
 })
 public class OpenWeatherCurrentWeather {
 
-    @JsonProperty("cod")
-    private String cod;
-    @JsonProperty("message")
-    private Double message;
-    @JsonProperty("cnt")
-    private Integer cnt;
-    @JsonProperty("list")
-    private java.util.List<OpenWeatherCurrentWeatherList> list = null;
-    @JsonProperty("city")
-    private OpenWeatherCity city;
+    @JsonProperty("temp")
+    private Double temp;
+    @JsonProperty("pressure")
+    private Integer pressure;
+    @JsonProperty("humidity")
+    private Integer humidity;
+    @JsonProperty("temp_min")
+    private Double tempMin;
+    @JsonProperty("temp_max")
+    private Double tempMax;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("cod")
-    public String getCod() {
-        return cod;
+    @JsonProperty("temp")
+    public Double getTemp() {
+        return temp;
     }
 
-    @JsonProperty("cod")
-    public void setCod(String cod) {
-        this.cod = cod;
+    @JsonProperty("temp")
+    public void setTemp(Double temp) {
+        this.temp = temp;
     }
 
-    @JsonProperty("message")
-    public Double getMessage() {
-        return message;
+    @JsonProperty("pressure")
+    public Integer getPressure() {
+        return pressure;
     }
 
-    @JsonProperty("message")
-    public void setMessage(Double message) {
-        this.message = message;
+    @JsonProperty("pressure")
+    public void setPressure(Integer pressure) {
+        this.pressure = pressure;
     }
 
-    @JsonProperty("cnt")
-    public Integer getCnt() {
-        return cnt;
+    @JsonProperty("humidity")
+    public Integer getHumidity() {
+        return humidity;
     }
 
-    @JsonProperty("cnt")
-    public void setCnt(Integer cnt) {
-        this.cnt = cnt;
+    @JsonProperty("humidity")
+    public void setHumidity(Integer humidity) {
+        this.humidity = humidity;
     }
 
-    @JsonProperty("list")
-    public java.util.List<OpenWeatherCurrentWeatherList> getList() {
-        return list;
+    @JsonProperty("temp_min")
+    public Double getTempMin() {
+        return tempMin;
     }
 
-    @JsonProperty("list")
-    public void setList(java.util.List<OpenWeatherCurrentWeatherList> list) {
-        this.list = list;
+    @JsonProperty("temp_min")
+    public void setTempMin(Double tempMin) {
+        this.tempMin = tempMin;
     }
 
-    @JsonProperty("city")
-    public OpenWeatherCity getCity() {
-        return city;
+    @JsonProperty("temp_max")
+    public Double getTempMax() {
+        return tempMax;
     }
 
-    @JsonProperty("city")
-    public void setCity(OpenWeatherCity city) {
-        this.city = city;
+    @JsonProperty("temp_max")
+    public void setTempMax(Double tempMax) {
+        this.tempMax = tempMax;
     }
 
     @JsonAnyGetter

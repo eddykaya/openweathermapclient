@@ -10,16 +10,15 @@ import org.testng.annotations.Test;
 import de.eddykaya.openweather.client.OpenWeatherClient;
 import de.eddykaya.openweather.entities.external.CurrentWeather;
 
-/**
- *
- */
 public class OpenWeatherClientTest {
+
+	private static final String TEST_API_KEY = "d0e7eff721cf0870e5db46cc783b53e5";
 
 	private OpenWeatherClient clientUnderTest;
 
 	@BeforeMethod
 	public void beforeMethod() {
-		clientUnderTest = new OpenWeatherClient("");
+		clientUnderTest = new OpenWeatherClient(TEST_API_KEY);
 	}
 
 	@Test
@@ -31,7 +30,7 @@ public class OpenWeatherClientTest {
 
 	@Test
 	public void returnsCurrentWeatherForExistingCity() {
-		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("Karlsruhe", Locale.GERMANY);
+		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("London", Locale.UK);
 		Assert.assertTrue(actualResponse.isPresent());
 	}
 
