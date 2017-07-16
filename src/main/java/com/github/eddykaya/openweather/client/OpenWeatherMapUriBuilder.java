@@ -16,6 +16,10 @@ class OpenWeatherMapUriBuilder {
 
 	private static final String API_KEY_PARAM = "APPID";
 
+	private static final String UNIT_QUERY_PARAM_NAME = "units";
+
+	private static final String UNIT_QUERY_PARAM = "metric";
+
 	private String apiVersion;
 
 	private String forecastPath;
@@ -52,6 +56,7 @@ class OpenWeatherMapUriBuilder {
 			.path(forecastPath)
 			.queryParam(ZIPCODE_QUERY_PARAM_NAME, getQueryParamsFormatted())
 			.queryParam(API_KEY_PARAM, apiKey)
+			.queryParam(UNIT_QUERY_PARAM_NAME, UNIT_QUERY_PARAM)
 			.build().toUri();
 	}
 

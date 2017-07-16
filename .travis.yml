@@ -1,3 +1,11 @@
 language: java
 jdk:
   - oraclejdk8
+env:
+  global:
+    - SONATYPE_USERNAME=yourusername
+    - secure: "SONATYPE_PASSWORD=vaH7IhTdKqV1H3Bj5AjsW1k1EizKgbbvNmbgQ78iiGdxRu3LM2N1kknfNkyhQl4yhQ+g8t/YSVw0WGBoB7qciHISq5JiWC8I1u/PQ6O4oLZdKzaYPO1GIYYwjQMyIpC2lGZgtyB4Ia+Pt8ktzLOO2c9FrIdGN76rO5jDEfNUkvkLMez6XZFwaHJZBHukNZofU2by4Hsc2IaSf47tnjUBtOuEEPJ251DpA5GTrsbUWIxy4GyIL5mgP2qSfIlZiF1UBa3MBkIoPjTS70bgxtLg/2bZ6j9K1STVy4vDDjPMFPmucrEwqbUzJBQxndNcLxb5b5UB9Xy9Uqq0e+yxPFMKH3dPbS2um3WQQ6sP9wJ211R3D0kz9ZDTNAfBDkOjitgRd6SLqu6YO/WZiKfMDkUIL6pXLjaUkcPERp3d5A1ABsRqRu/3flTcx+Wq4K0LQXHz7gDIJe9168AYwRb6RmPuWUnXm24a2xXP/NrcvtS6GWcNWPKDOT6uNM0WAI1Jps/jMXjs09HJygNTCM9veJ30eYaWLBx4dWewyjSVlgTtVuBz96wKR4TOOJ3scydaeB529Xrv0ydo+Kjwk8SKY1mTyWivyNBUxnH6i0qZxjhwVP70VH+CkzPUfDD/GqjuUl3nF07WTCve38howZ/XR6nYdw25bVKJlzKVsho085ig8cI="
+    
+after_success:
+  - python addServer.py
+- mvn clean deploy --settings ~/.m2/mySettings.xml

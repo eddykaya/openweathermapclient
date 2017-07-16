@@ -11,5 +11,5 @@ import lombok.Data;
 public class CurrentWeather {
 
 	private final double currentTemperature;
-
+	private final TemperatureUnit temperatureUnit = TemperatureUnit.CELSIUS;
 }
