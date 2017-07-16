@@ -8,10 +8,8 @@ import org.springframework.web.client.ResponseErrorHandler;
 
 import de.eddykaya.openweather.client.exceptions.ResourceNotFoundException;
 
-/**
- *
- */
-public class HttpClientErrorHandler implements ResponseErrorHandler {
+class HttpClientErrorHandler implements ResponseErrorHandler {
+
 	@Override
 	public boolean hasError(final ClientHttpResponse response) throws IOException {
 		return response.getStatusCode().equals(HttpStatus.NOT_FOUND);
