@@ -8,7 +8,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 class OpenWeatherMapUriBuilder {
 
-	private static final String QUERY_PARAM_NAME = "q";
+	private static final String ZIPCODE_QUERY_PARAM_NAME = "zip";
 
 	private static final String OPENWEATHERMAP_BASE_URL = "http://api.openweathermap.org";
 
@@ -50,7 +50,7 @@ class OpenWeatherMapUriBuilder {
 			.path(OPENWEATHERMAP_API_PATH)
 			.path("/" + apiVersion)
 			.path(forecastPath)
-			.queryParam(QUERY_PARAM_NAME, getQueryParamsFormatted())
+			.queryParam(ZIPCODE_QUERY_PARAM_NAME, getQueryParamsFormatted())
 			.queryParam(API_KEY_PARAM, apiKey)
 			.build().toUri();
 	}
@@ -60,6 +60,6 @@ class OpenWeatherMapUriBuilder {
 
 		queryParams.forEach(q -> queryParamsFormatted.append(q + ","));
 
-		return queryParamsFormatted.toString();
+		return queryParamsFormatted.substring(0, queryParamsFormatted.lastIndexOf(","));
 	}
 }

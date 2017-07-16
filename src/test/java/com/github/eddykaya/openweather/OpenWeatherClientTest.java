@@ -23,14 +23,14 @@ public class OpenWeatherClientTest {
 
 	@Test
 	public void returnsEmptyOptionalIfCityNotFound() {
-		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("Can't find this damn city",
+		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("1111111",
 			Locale.GERMANY);
 		Assert.assertFalse(actualResponse.isPresent());
 	}
 
 	@Test
 	public void returnsCurrentWeatherForExistingCity() {
-		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("London", Locale.UK);
+		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("76137", Locale.GERMANY);
 		Assert.assertTrue(actualResponse.isPresent());
 	}
 

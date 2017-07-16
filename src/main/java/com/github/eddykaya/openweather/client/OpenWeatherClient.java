@@ -30,26 +30,26 @@ public class OpenWeatherClient {
 	}
 
 	/**
-	 * Fetches the current weather at the given city in the given locale
-	 * @param city the city you want to query
-	 * @param country the country where the city is in.
-	 * @return a {@link Optional} providing either the current weather. It is empty if the city could not be found.
+	 * Fetches the current weather at the given zipCode in the given locale
+	 * @param zipCode the zipCode you want to query
+	 * @param country the country where the zipCode is in.
+	 * @return a {@link Optional} providing either the current weather. It is empty if the zipCode could not be found.
 	 */
-	public Optional<CurrentWeather> fetchCurrentWeatherAt(String city, Locale country) {
+	public Optional<CurrentWeather> fetchCurrentWeatherAt(String zipCode, Locale country) {
 		Optional<CurrentWeather> response;
 
-		response = findWeatherForCurrentCityAtOpenweathermap(city, country.getISO3Country());
+		response = findWeatherForCurrentCityAtOpenweathermap(zipCode, country.getCountry());
 
 		return response;
 	}
 
-	private Optional<CurrentWeather> findWeatherForCurrentCityAtOpenweathermap(final String city, final String
+	private Optional<CurrentWeather> findWeatherForCurrentCityAtOpenweathermap(final String zipCode, final String
 		countryCode) {
 		URI requestUri = new OpenWeatherMapUriBuilder()
 			.withVersion("2.5")
 			.withApiKey(apiKey)
 			.withForecast()
-			.withQuery(city)
+			.withQuery(zipCode)
 			.withQuery(countryCode)
 			.toUri();
 
