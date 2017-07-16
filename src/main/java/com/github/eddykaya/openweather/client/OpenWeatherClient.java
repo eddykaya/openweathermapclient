@@ -1,4 +1,4 @@
-package de.eddykaya.openweather.client;
+package com.github.eddykaya.openweather.client;
 
 import java.net.URI;
 import java.util.Locale;
@@ -7,9 +7,9 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import de.eddykaya.openweather.client.exceptions.ResourceNotFoundException;
-import de.eddykaya.openweather.entities.external.CurrentWeather;
-import de.eddykaya.openweather.entities.internal.OpenWeatherExample;
+import com.github.eddykaya.openweather.client.exceptions.ResourceNotFoundException;
+import com.github.eddykaya.openweather.entities.external.CurrentWeather;
+import com.github.eddykaya.openweather.entities.internal.OpenWeatherExample;
 
 /**
  * A client that can query the openweathermap API for the current weather

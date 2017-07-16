@@ -1,5 +1,5 @@
 
-package de.eddykaya.openweather.entities.internal;
+package com.github.eddykaya.openweather.entities.internal;
 
 import java.util.HashMap;
 import java.util.List;

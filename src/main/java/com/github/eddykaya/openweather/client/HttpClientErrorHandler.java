@@ -1,4 +1,4 @@
-package de.eddykaya.openweather.client;
+package com.github.eddykaya.openweather.client;
 
 import java.io.IOException;
 
@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.ResponseErrorHandler;
 
-import de.eddykaya.openweather.client.exceptions.ResourceNotFoundException;
+import com.github.eddykaya.openweather.client.exceptions.ResourceNotFoundException;
 
 class HttpClientErrorHandler implements ResponseErrorHandler {
 

@@ -1,4 +1,4 @@
-package de.eddykaya.openweather.client.exceptions;
+package com.github.eddykaya.openweather.client.exceptions;
 
 /**
  * This exception is thrown if we can not find a resource on the openweathermap API (e.g. API responds with a 404 error)

@@ -1,4 +1,4 @@
-package de.eddykaya.openweather;
+package com.github.eddykaya.openweather;
 
 import java.util.Locale;
 import java.util.Optional;
@@ -7,8 +7,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import de.eddykaya.openweather.client.OpenWeatherClient;
-import de.eddykaya.openweather.entities.external.CurrentWeather;
+import com.github.eddykaya.openweather.client.OpenWeatherClient;
+import com.github.eddykaya.openweather.entities.external.CurrentWeather;
 
 public class OpenWeatherClientTest {
 

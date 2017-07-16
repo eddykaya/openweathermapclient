@@ -1,4 +1,4 @@
-package de.eddykaya.openweather.entities.external;
+package com.github.eddykaya.openweather.entities.external;
 
 import lombok.Builder;
 import lombok.Data;

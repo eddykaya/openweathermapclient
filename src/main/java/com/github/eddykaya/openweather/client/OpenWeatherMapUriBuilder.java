@@ -1,4 +1,4 @@
-package de.eddykaya.openweather.client;
+package com.github.eddykaya.openweather.client;
 
 import java.net.URI;
 import java.util.ArrayList;
