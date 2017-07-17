@@ -1,3 +1,5 @@
+https://travis-ci.org/eddykaya/openweathermapclient.svg?branch=master
+
 # openweathermapclient
 This a an easy to use java client for the [Openweathermap API](https://openweathermap.org/api)
 
