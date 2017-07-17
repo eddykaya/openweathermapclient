@@ -22,14 +22,25 @@ public class OpenWeatherClientTest {
 	}
 
 	@Test
-	public void returnsEmptyOptionalIfCityNotFound() {
+	public void returnsEmptyOptionalIfZipCodeNotFound() {
 		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("1111111",
 			Locale.GERMANY);
 		Assert.assertFalse(actualResponse.isPresent());
 	}
 
 	@Test
-	public void returnsCurrentWeatherForExistingCity() {
+	public void returnsCurrentWeatherForExistingZipCode() {
+		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("76137", Locale.GERMANY);
+		Assert.assertTrue(actualResponse.isPresent());
+	}
+
+	/**
+	 * This test demonstrates that client works behind a proxy. It is disabled because I don't know if the proxy
+	 * will exist forever, so if you need to test the proxy functionality provide your own proxy server.
+	 */
+	@Test(enabled = false)
+	public void returnsCurrentWeatherForExistingZipCodeViaProxy() {
+		clientUnderTest = new OpenWeatherClient(TEST_API_KEY, "61.6.41.111", 53281,"","");
 		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("76137", Locale.GERMANY);
 		Assert.assertTrue(actualResponse.isPresent());
 	}

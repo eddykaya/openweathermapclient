@@ -5,6 +5,7 @@ import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import com.github.eddykaya.openweather.client.exceptions.ResourceNotFoundException;
@@ -17,6 +18,9 @@ import com.github.eddykaya.openweather.entities.internal.OpenWeatherExample;
 public class OpenWeatherClient {
 
 	private final String apiKey;
+
+	private final RestTemplateFactory restTemplateFactory = new RestTemplateFactory();
+
 	private RestTemplate restTemplate;
 
 	/**
@@ -26,6 +30,26 @@ public class OpenWeatherClient {
 	public OpenWeatherClient(String apiKey) {
 		this.apiKey = apiKey;
 		this.restTemplate = new RestTemplate();
+		restTemplate.setErrorHandler(new HttpClientErrorHandler());
+	}
+
+	/**
+	 * This constructor enforces usage of a http proxy with authentication
+	 * @param apiKey your openweathermap API Key
+	 * @param httpProxyHost the host of your http proxy, not <code>null</code>
+	 * @param httpProxyPort the port of your http proxy, not <code>null</code>
+	 * @param httpProxyUser the username of your http proxy, not <code>null</code>
+	 * @param httpProxyPass the password of your http proxy, not <code>null</code>
+	 */
+	public OpenWeatherClient(String apiKey, String httpProxyHost, int httpProxyPort, String httpProxyUser, String
+		httpProxyPass) {
+		this(apiKey);
+
+		SimpleClientHttpRequestFactory requestFactory = restTemplateFactory.getRequestFactoryWithProxyAuth(
+			httpProxyHost, httpProxyPort,
+			httpProxyUser, httpProxyPass);
+
+		restTemplate = new RestTemplate(requestFactory);
 		restTemplate.setErrorHandler(new HttpClientErrorHandler());
 	}
 
