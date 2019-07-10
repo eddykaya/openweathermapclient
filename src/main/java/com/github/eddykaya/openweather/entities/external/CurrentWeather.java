@@ -3,9 +3,6 @@ package com.github.eddykaya.openweather.entities.external;
 import lombok.Builder;
 import lombok.Data;
 
-/**
- *
- */
 @Data
 @Builder
 public class CurrentWeather {
