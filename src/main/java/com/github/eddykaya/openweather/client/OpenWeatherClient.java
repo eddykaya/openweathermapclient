@@ -80,7 +80,12 @@ public class OpenWeatherClient {
 		try {
 			ResponseEntity<OpenWeatherExample> forEntity = restTemplate.getForEntity(requestUri, OpenWeatherExample.class);
 
-			return Optional.of(CurrentWeather.builder().currentTemperature(forEntity.getBody().getMain().getTemp())
+			OpenWeatherExample body = forEntity.getBody();
+
+			return Optional.of(CurrentWeather.builder()
+					.currentTemperature(body.getMain().getTemp())
+					.humidity(body.getMain().getHumidity())
+					.pressure(body.getMain().getPressure())
 				.build());
 		} catch (ResourceNotFoundException e) {
 			return Optional.empty();

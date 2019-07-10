@@ -7,6 +7,9 @@ import lombok.Data;
 @Builder
 public class CurrentWeather {
 
-	private final double currentTemperature;
-	private final TemperatureUnit temperatureUnit = TemperatureUnit.CELSIUS;
+    private final double currentTemperature;
+    private final TemperatureUnit temperatureUnit = TemperatureUnit.CELSIUS;
+
+    private final int pressure;
+    private final int humidity;
 }

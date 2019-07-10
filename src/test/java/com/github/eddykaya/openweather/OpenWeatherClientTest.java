@@ -10,6 +10,9 @@ import org.testng.annotations.Test;
 import com.github.eddykaya.openweather.client.OpenWeatherClient;
 import com.github.eddykaya.openweather.entities.external.CurrentWeather;
 
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+
 public class OpenWeatherClientTest {
 
 	private static final String TEST_API_KEY = "d0e7eff721cf0870e5db46cc783b53e5";
@@ -25,13 +28,29 @@ public class OpenWeatherClientTest {
 	public void returnsEmptyOptionalIfZipCodeNotFound() {
 		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("1111111",
 			Locale.GERMANY);
-		Assert.assertFalse(actualResponse.isPresent());
+
+		assertFalse(actualResponse.isPresent());
 	}
 
 	@Test
 	public void returnsCurrentWeatherForExistingZipCode() {
 		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("76137", Locale.GERMANY);
-		Assert.assertTrue(actualResponse.isPresent());
+
+		assertTrue(actualResponse.isPresent());
+	}
+
+	@Test
+	public void returnsHumidity() {
+		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("76137", Locale.GERMANY);
+
+		assertTrue(actualResponse.get().getHumidity() != 0);
+	}
+
+	@Test
+	public void returnsPressure() {
+		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("76137", Locale.GERMANY);
+
+		assertTrue(actualResponse.get().getPressure() != 0);
 	}
 
 	/**
@@ -42,7 +61,7 @@ public class OpenWeatherClientTest {
 	public void returnsCurrentWeatherForExistingZipCodeViaProxy() {
 		clientUnderTest = new OpenWeatherClient(TEST_API_KEY, "61.6.41.111", 53281,"","");
 		Optional<CurrentWeather> actualResponse = clientUnderTest.fetchCurrentWeatherAt("76137", Locale.GERMANY);
-		Assert.assertTrue(actualResponse.isPresent());
+		assertTrue(actualResponse.isPresent());
 	}
 
 }
